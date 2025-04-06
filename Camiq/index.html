@@ -3,39 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href = "style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Camiq</title>
+    
 </head>
 <body>
-    <div class="header">
-        <div class="left-header">
-            Camiq
-        </div>
-        <div class="right-header">
-            <div>About</div>
-            <div>Model</div>
-            <div>Data</div>
-        </div>
-    </div>
+    <header>
+        <div class="logo">Camiq</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="input-box">
-        <div class="result-showing">
-            Result
-        </div>
-        <div class="input-buttons">
-            <div class="upload-button">
-                Upload
+    <div class="container">
+        <main class="hero">
+            <div class="video-container">
+                <div class="video-screen" id="videoScreen">
+                    <span>Your processed video will appear here</span>
+                    <img id="outputImage" src="" alt="Processed output">
+                    <video id="outputVideo" controls></video>
+                </div>
+                <div class="controls">
+                    <label for="uploadInput" class="btn btn-primary">Upload</label>
+                    <input type="file" id="uploadInput" accept="video/*,image/*">
+                    <button class="btn btn-secondary" id="recordBtn">Record</button>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-success" id="generateBtn">Generate</button>
+                </div>
             </div>
-            <div class="record-button">
-                Record
-            </div>
-        </div>
+        </main>
     </div>
 
-    <div class="credits">
-        Made by Manthan Awgan
-    </div>
+    <script>
+        const uploadInput = document.getElementById('uploadInput');
+        const recordBtn = document.getElementById('recordBtn');
+        const generateBtn = document.getElementById('generateBtn');
+        const videoScreen = document.getElementById('videoScreen');
+        const outputImage = document.getElementById('outputImage');
+        const outputVideo = document.getElementById('outputVideo');
+        const screenText = videoScreen.querySelector('span');
 
+        // Handle file upload
+        uploadInput.addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                screenText.textContent = "File selected: " + e.target.files[0].name;
+            }
+        });
 
+        // Handle record button
+        recordBtn.addEventListener('click', function() {
+            screenText.textContent = "Recording functionality would be implemented soon";
+        });
+
+        // Handle generate button
+        generateBtn.addEventListener('click', function() {
+            // Simulate processing delay
+            screenText.textContent = "Processing...";
+            
+            setTimeout(() => {
+                // This is where you would normally process the video
+                // For demonstration, we'll just show a placeholder
+                screenText.style.display = 'none';
+                
+                // Display a placeholder video (in a real app, this would be your processed output)
+                outputVideo.src = "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4";
+                outputVideo.style.display = 'block';
+            }, 2000);
+        });
+    </script>
 </body>
 </html>
+
+
